@@ -10,4 +10,4 @@
   ![author](/static/author.png)
 - search + svelte-paginate(library) (reactive)
   ![search1](/static/search1.png)
-  ![search1](/static/search2.png)
+  ![search2](/static/search2.png)
