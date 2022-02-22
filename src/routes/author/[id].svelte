@@ -1,0 +1,36 @@
+<script context="module">
+	export const load = async ({ fetch, params }) => {
+		const res = await fetch(`https://jsonplaceholder.typicode.com/users/${params.id}?_embed=posts`)
+		const user = await res.json()
+		const posts = user.posts
+
+		return {
+			props: {
+				user,
+				posts
+			}
+		}
+	}
+</script>
+
+<script>
+	export let user
+	export let posts
+</script>
+
+<h1>{user.name}</h1>
+<p>{user.company.catchPhrase}</p>
+<p>{user.email}</p>
+
+<h2>Posts by this Author</h2>
+{#each posts as item}
+	<li>
+		<a sveltekit:prefetch href="{`/blog/${item.id}`}">{item.title}</a>
+	</li>
+{/each}
+
+<style>
+	li {
+		margin-bottom: 10px;
+	}
+</style>
